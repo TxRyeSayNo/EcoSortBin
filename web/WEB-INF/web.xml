@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
+         version="6.0">
+         
+    <!-- Cấu hình session timeout mặc định 30 phút theo PRD -->
+    <session-config>
+        <session-timeout>30</session-timeout>
+        <cookie-config>
+            <http-only>true</http-only>
+        </cookie-config>
+    </session-config>
+    
+    <!-- Trang mặc định khi vào root URL -->
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+    
+    <!-- Cấu hình trang lỗi -->
+    <error-page>
+        <error-code>404</error-code>
+        <location>/WEB-INF/views/errors/404.jsp</location>
+    </error-page>
+    <!--
+    <error-page>
+        <error-code>500</error-code>
+        <location>/WEB-INF/views/errors/500.jsp</location>
+    </error-page>
+    -->
+
+    <!-- Servlets cho IoT API -->
+    <servlet>
+        <servlet-name>ApiEventServlet</servlet-name>
+        <servlet-class>com.ecosortbin.api.ApiEventServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ApiEventServlet</servlet-name>
+        <url-pattern>/api/event</url-pattern>
+        <url-pattern>/api/latest</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>HeartbeatServlet</servlet-name>
+        <servlet-class>com.ecosortbin.api.HeartbeatServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>HeartbeatServlet</servlet-name>
+        <url-pattern>/api/heartbeat</url-pattern>
+        <url-pattern>/api/bin-status</url-pattern>
+    </servlet-mapping>
+
+</web-app>

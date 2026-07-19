@@ -1,0 +1,29 @@
+<%@ page pageEncoding="UTF-8" %>
+<header class="app-header">
+    <div class="header-title-container">
+        <button class="mobile-toggle" id="mobileToggle" onclick="toggleSidebar()">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+        <h1 class="header-title">${pageTitle}</h1>
+    </div>
+    <div class="header-actions">
+        <a href="${pageContext.request.contextPath}/account" class="user-profile">
+            <div class="user-info" style="text-align: right;">
+                <span class="user-name">Quản trị viên</span>
+                <span class="user-role">admin@ecosortbin.vn</span>
+            </div>
+            <div class="user-avatar">
+                <i class="fa-solid fa-user"></i>
+            </div>
+        </a>
+    </div>
+</header>
+
+<script>
+function toggleSidebar() {
+    const sidebar = document.getElementById('sidebar');
+    if (sidebar) {
+        sidebar.classList.toggle('show');
+    }
+}
+</script>

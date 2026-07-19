@@ -1,0 +1,39 @@
+<%@ page pageEncoding="UTF-8" %>
+<aside class="app-sidebar" id="sidebar">
+    <div class="sidebar-header">
+        <a href="${pageContext.request.contextPath}/dashboard" class="sidebar-logo">
+            <i class="fa-solid fa-recycle"></i>
+            EcoSortBin
+        </a>
+    </div>
+    <div class="sidebar-nav">
+        <!-- Set active class based on request URI or attribute -->
+        <a href="${pageContext.request.contextPath}/dashboard" class="nav-item ${activeMenu == 'dashboard' ? 'active' : ''}">
+            <i class="fa-solid fa-chart-pie"></i>
+            Tổng quan
+        </a>
+        <a href="${pageContext.request.contextPath}/history" class="nav-item ${activeMenu == 'history' ? 'active' : ''}">
+            <i class="fa-solid fa-clock-rotate-left"></i>
+            Lịch sử phân loại
+        </a>
+        <a href="${pageContext.request.contextPath}/notifications" class="nav-item ${activeMenu == 'notifications' ? 'active' : ''}">
+            <i class="fa-solid fa-bell"></i>
+            Thông báo
+            <span class="nav-badge">3</span>
+        </a>
+
+        <a href="#" class="nav-item text-danger" onclick="confirmLogout(event)" style="margin-top: auto; color: var(--error);">
+            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+            Đăng xuất
+        </a>
+    </div>
+</aside>
+
+<script>
+function confirmLogout(e) {
+    e.preventDefault();
+    if (confirm('Bạn có chắc chắn muốn đăng xuất?')) {
+        window.location.href = '${pageContext.request.contextPath}/auth/logout';
+    }
+}
+</script>
